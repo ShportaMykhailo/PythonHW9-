@@ -1,0 +1,58 @@
+//1. Дано ціле число (int). Порахувати скільки нулів в цьому числі.
+
+user_input = input("Enter a number: ")
+my_symbol = "0"
+count = str(user_input).count(my_symbol)
+print(count)
+
+//2. Дано ціле число (int). Порахувати скільки нулів в кінці цього числа. Наприклад для числа 1002000 - три нулі
+
+user_input = input("Enter a number: ")
+my_symbol = "0"
+count = 0
+for symbol in str(user_input):
+    if symbol == my_symbol:
+        count += 1
+    else:
+        count = 0
+print(count)
+
+//3. Дан список my_list. СТВОРИТИ НОВИЙ список new_list у якого перший элемент з my_list
+стоїть на останньому месці в new_list. Якщо my_list [1,2,3,4], то new_list [2,3,4,1]
+
+my_list = [1,2,3,4]
+new_list = []
+for _ in range(len(my_list)):
+    new_list.append(None)
+for idx in range(len(my_list)):
+    if idx == 0:
+        new_list[len(my_list)-1] = my_list[0]
+    else:
+        new_list[idx-1] = my_list[idx]
+print(new_list)
+
+//4. Дана строка в якій є числа (разділяються пробілами).
+Наприклад "43 більше за 34, але меньше за 56". Знайти суму ВСІХ ЧИСЕЛ (А НЕ ЦИФР) в цій строкі.
+Для даного прикладу відповідь - 133. (використайте split и перевірку isdigit)
+
+import re
+user_str = input("Enter a sentence: ")
+my_list = re.split(' |,', user_str)
+res = 0
+for idx in range(len(my_list)):
+    if my_list[idx].isdigit():
+        res += int(my_list[idx])
+print(my_list)
+print(res)
+
+//6. Дан список чисел. Порахуйте, скольки в цьому списку елементів,
+які більше за суму двох своїх сусідів (зліва и справа), и НАДРУКУЙТЕ КІЛЬКІСТЬ таких елементів.
+Крайні елементи списку не враховувати, оскільки в них недостньо сусідів.
+Для списка [2,4,1,5,3,9,0,7] відповіддю буде 3, тому що 4 > 2+1, 5 > 1+3, 9>3+0.
+
+my_list = [2,4,1,5,3,9,0,7]
+res = 0
+for idx in range(len(my_list)-1):
+    if idx != 0 and (my_list[idx] > my_list[idx-1] + my_list[idx+1]):
+        res += 1
+print(res)
